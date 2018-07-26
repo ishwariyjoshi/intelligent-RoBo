@@ -1,0 +1,57 @@
+1 installin g new update of raspberri pi 3 B
+ 
+•	sudo apt-gat install update
+•	sudo apt-gat install disk upgrade
+Step
+
+step 2 install tensorflow
+•	mkdir tf
+•	cd tf
+
+step 3 install openCV
+•	sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
+•	sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+•	sudo apt-get install libxvidcore-dev libx264-dev
+•	sudo apt-get install qt4-dev-tools
+
+step 4 compile and install protobuff 
+•	sudo apt-get install autoconf automake libtool curl
+•	Then download the protobuf release from its GitHub repository by issuing:
+wget https://github.com/google/protobuf/releases/download/v3.5.1/protobuf-all-3.5.1.tar.gz
+•	If a more recent version of protobuf is available, download that instead. Unpack the file and cd into the folder:
+•	tar -zxvf protobuf-all-3.5.1.tar.gz
+•	cd protobuf-3.5.1
+•	Configure the build by issuing the following command
+         ./configure
+•	make
+•	make check
+•	sudo make install
+•	export LD_LIBRARY_PATH=../src/.libs
+•	python3 setup.py build --cpp_implementation
+•	python3 setup.py test --cpp_implementation
+•	sudo python3 setup.py install –cpp_implementation
+•	export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=cpp
+•	export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION_VERSION=3
+•	sudo ldconfig
+•	protoc
+•	sudo reboot now
+
+
+step 5 setup tensorflow directory sturucture
+•	mkdir tensorflow1
+•	cd tensorflow1
+•	git clone --recurse-submodules https://github.com/tensorflow/models.git
+•	sudo nano ~/.bashrc
+•	export PYTHONPATH=$PYTHONPATH:/home/pi/tensorflow1/models/research:/home/pi/tensorflow1/models/research/slim
+•	cd /home/pi/tensorflow1/models/research
+•	protoc object_detection/protos/*.proto –python_out=.
+•	cd /home/pi/tensorflow1/models/research/object_detection
+•	wget http://download.tensorflow.org/models/object_detection/ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz
+•	tar -xzvf ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz
+
+step 6 dtect object    
+•	wget https://raw.githubusercontent.com/EdjeElectronics/TensorFlow-Object-Detection-on-the-Raspberry-Pi/master
+•	/Object_detection_picamera.py
+•	python3 Object_detection_picamera.py
+•	python3 Object_detection_picamera.py --usbcam
+
